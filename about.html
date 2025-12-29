@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amiral Records — About</title>
+
+<style>
+:root{
+--bg0:#000;
+--bg1:#050505;
+--bg2:#020202;
+--txt:rgba(255,255,255,.82)
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+overflow:hidden;
+background:var(--bg0);
+color:var(--txt);
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial
+}
+
+.stage{
+position:relative;
+width:100vw;
+height:100vh;
+background:
+radial-gradient(1000px 560px at 50% 46%,rgba(255,255,255,.055),transparent 60%),
+radial-gradient(760px 420px at 50% 50%,rgba(255,0,0,.09),transparent 62%),
+radial-gradient(1200px 900px at 50% 55%,transparent 46%,rgba(0,0,0,.74) 74%,rgba(0,0,0,.95) 100%),
+linear-gradient(180deg,var(--bg1),var(--bg2))
+}
+
+.topnav{
+position:fixed;
+top:22px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:28px;
+padding:10px 14px;
+border-radius:999px;
+background:linear-gradient(180deg,rgba(255,0,0,.06),rgba(0,0,0,.55));
+border:1px solid rgba(255,255,255,.1);
+letter-spacing:.16em;
+text-transform:uppercase;
+font-weight:700;
+font-size:12px
+}
+
+.topnav a{
+color:rgba(255,255,255,.7);
+text-decoration:none
+}
+
+.wrap{
+position:absolute;
+inset:0;
+display:grid;
+place-items:center;
+padding:110px 24px
+}
+
+.card{
+width:min(900px,92vw);
+border-radius:18px;
+border:1px solid rgba(255,255,255,.1);
+background:linear-gradient(180deg,rgba(10,10,10,.86),rgba(0,0,0,.82));
+padding:22px
+}
+
+.kicker{
+letter-spacing:.18em;
+text-transform:uppercase;
+font-weight:900;
+font-size:12px
+}
+
+.text{
+margin-top:14px;
+line-height:1.65;
+font-size:14px;
+color:rgba(255,255,255,.78)
+}
+</style>
+</head>
+
+<body>
+<div class="stage">
+
+<nav class="topnav">
+<a href="/">HOME</a>
+<a href="/about">ABOUT</a>
+</nav>
+
+<div class="wrap">
+<div class="card">
+<div class="kicker">ABOUT</div>
+<div class="text">
+Amiral Records is an independent label built for raw energy, dark aesthetics, and artists who don’t fit inside clean boxes.
+We move quiet, ship heavy, and let the work speak.
+</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

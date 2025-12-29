@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admiral Records — Artists</title>
+
+<style>
+  :root{
+    --bg0:#000; --bg1:#050505; --bg2:#020202;
+    --txt: rgba(255,255,255,.82); --mut: rgba(255,255,255,.56);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; overflow:hidden;
+    background:var(--bg0); color:var(--txt);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  .stage{
+    position:relative; width:100vw; height:100vh; isolation:isolate;
+    background:
+      radial-gradient(1000px 560px at 50% 46%, rgba(255,255,255,.055), transparent 60%),
+      radial-gradient(760px 420px at 50% 50%, rgba(255,0,0,.09), transparent 62%),
+      radial-gradient(1200px 900px at 50% 55%, transparent 46%, rgba(0,0,0,.74) 74%, rgba(0,0,0,.95) 100%),
+      linear-gradient(180deg, var(--bg1), var(--bg2));
+  }
+  .stage::before{
+    content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
+    background:
+      radial-gradient(520px 120px at 50% 7%, rgba(179,0,0,.24), transparent 72%),
+      radial-gradient(360px 90px at 42% 9%, rgba(255,0,0,.14), transparent 75%),
+      radial-gradient(420px 110px at 58% 9%, rgba(255,0,0,.12), transparent 78%);
+    mix-blend-mode:screen; filter:blur(.6px); opacity:.85;
+  }
+  .topnav{
+    position:fixed; top:22px; left:50%; transform:translateX(-50%);
+    z-index:10; display:flex; gap:28px; padding:10px 14px; border-radius:999px;
+    background: linear-gradient(180deg, rgba(255,0,0,.06), rgba(0,0,0,.55));
+    border:1px solid rgba(255,255,255,.10); backdrop-filter: blur(3px);
+    box-shadow: 0 14px 40px rgba(0,0,0,.55);
+    letter-spacing:.16em; text-transform:uppercase; font-weight:700; font-size:12px;
+  }
+  .topnav a{ color:rgba(255,255,255,.70); text-decoration:none; padding:6px 8px; border-radius:999px; transition:.18s; }
+  .topnav a:hover{ color:rgba(255,255,255,.92); background:rgba(255,0,0,.08); transform:translateY(-1px); }
+
+  .wrap{
+    position:absolute; inset:0;
+    display:grid; place-items:center;
+    padding: 110px 24px 110px;
+    z-index:2;
+  }
+  .card{
+    width:min(980px, 92vw);
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.10);
+    background:
+      radial-gradient(520px 220px at 20% 20%, rgba(255,0,0,.08), transparent 60%),
+      linear-gradient(180deg, rgba(10,10,10,.86), rgba(0,0,0,.82));
+    box-shadow: 0 22px 80px rgba(0,0,0,.75);
+    padding: 22px;
+  }
+  .kicker{
+    letter-spacing:.18em; text-transform:uppercase; font-weight:900; font-size:12px;
+    color: rgba(255,255,255,.85);
+  }
+  .sub{
+    margin-top:10px;
+    color: rgba(255,255,255,.62);
+    font-size:12px;
+    letter-spacing:.08em;
+  }
+
+  /* No ugly white scrollbars: card content fits. If you expect lots of artists,
+     we can paginate or make a “Load more” instead of scrolling. */
+  .grid{
+    margin-top:14px;
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .artist{
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:14px;
+    padding:12px;
+    background: linear-gradient(180deg, rgba(255,0,0,.04), rgba(0,0,0,.45));
+    box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  }
+  .name{
+    font-weight:900;
+    letter-spacing:.10em;
+    text-transform:uppercase;
+    font-size:12px;
+    color: rgba(255,255,255,.90);
+  }
+  .meta{
+    margin-top:6px;
+    font-size:12px;
+    color: rgba(255,255,255,.62);
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tag{
+    border:1px solid rgba(255,255,255,.10);
+    padding:4px 8px;
+    border-radius:999px;
+    background: rgba(255,0,0,.05);
+  }
+  .links{
+    margin-top:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .links a{
+    color: rgba(255,255,255,.74);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(255,0,0,.18);
+    padding-bottom:2px;
+  }
+  .links a:hover{ color:#fff; border-bottom-color: rgba(255,0,0,.45); }
+
+  .back{
+    margin-top:16px;
+    display:inline-flex; align-items:center; gap:10px;
+    color: rgba(255,255,255,.70);
+    text-decoration:none;
+    letter-spacing:.14em; text-transform:uppercase; font-size:12px;
+    border-bottom:1px solid rgba(255,0,0,.22);
+    padding-bottom:2px;
+  }
+  .back:hover{ color:#fff; border-bottom-color: rgba(255,0,0,.45); }
+
+  .status{
+    margin-top:12px;
+    font-size:12px;
+    color: rgba(255,255,255,.55);
+    border-left:2px solid rgba(255,0,0,.35);
+    padding-left:10px;
+  }
+
+  /* overlays */
+  .grain,.scratches,.blood,.drips{ position:absolute; pointer-events:none; z-index:4; }
+  .grain{ inset:-25%; opacity:.14; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E"); background-size:240px 240px; mix-blend-mode:overlay; animation:grainMove 7s steps(8) infinite; }
+  @keyframes grainMove{ 0%{transform:translate3d(-2%,-2%,0)} 50%{transform:translate3d(2%,1%,0)} 100%{transform:translate3d(-2%,-2%,0)} }
+  .scratches{ inset:0; opacity:.12; background:repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 24px); mix-blend-mode:screen; animation:scratch 4.1s infinite; }
+  @keyframes scratch{ 0%,100%{transform:translateX(0);opacity:.10} 40%{transform:translateX(-1px);opacity:.15} 72%{transform:translateX(1px);opacity:.12} }
+  .blood{ inset:-10%; opacity:.34; background:radial-gradient(160px 120px at 12% 22%, rgba(179,0,0,.55), transparent 72%), radial-gradient(190px 140px at 86% 20%, rgba(179,0,0,.42), transparent 74%), radial-gradient(170px 130px at 78% 84%, rgba(179,0,0,.26), transparent 78%), radial-gradient(160px 120px at 24% 86%, rgba(179,0,0,.22), transparent 78%); filter:blur(.7px); mix-blend-mode:screen; animation:bloodBreath 10s ease-in-out infinite; }
+  @keyframes bloodBreath{ 0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.28} 50%{transform:translate3d(0,-1%,0) scale(1.01);opacity:.38} }
+  .drips{ inset:0; opacity:.28; background:radial-gradient(70px 260px at 46% 0%, rgba(255,0,0,.20), transparent 72%), radial-gradient(50px 220px at 52% 0%, rgba(179,0,0,.18), transparent 76%); filter:blur(.9px); mix-blend-mode:screen; animation:dripShift 12.5s ease-in-out infinite; }
+  @keyframes dripShift{ 0%,100%{transform:translateY(0);opacity:.22} 50%{transform:translateY(7px);opacity:.34} }
+
+  @media (max-width:520px){
+    .grid{ grid-template-columns:1fr; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .grain,.scratches,.blood,.drips{ animation:none !important; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="stage">
+    <nav class="topnav" aria-label="Primary">
+      <a href="./index.html">HOME</a>
+      <a href="./about.html">ABOUT</a>
+      <a href="./artists.html">ARTISTS</a>
+    </nav>
+
+    <div class="wrap">
+      <div class="card">
+        <div class="kicker">ARTISTS</div>
+        <div class="sub">Updated from artists.json</div>
+
+        <div id="status" class="status">Loading artists…</div>
+        <div id="grid" class="grid" aria-live="polite"></div>
+
+        <a class="back" href="./index.html">← Back to Home</a>
+      </div>
+    </div>
+
+    <div class="blood" aria-hidden="true"></div>
+    <div class="drips" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scratches" aria-hidden="true"></div>
+  </div>
+
+<script>
+  const statusEl = document.getElementById('status');
+  const gridEl = document.getElementById('grid');
+
+  function escapeHTML(str){
+    return String(str ?? '')
+      .replaceAll('&','&amp;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;')
+      .replaceAll('"','&quot;')
+      .replaceAll("'","&#039;");
+  }
+
+  function artistCard(a){
+    const name = escapeHTML(a.name);
+    const genre = escapeHTML(a.genre);
+    const city = escapeHTML(a.city);
+    const instagram = a.instagram ? String(a.instagram) : '';
+    const spotify = a.spotify ? String(a.spotify) : '';
+
+    const tags = [];
+    if (genre) tags.push(`<span class="tag">${genre}</span>`);
+    if (city) tags.push(`<span class="tag">${city}</span>`);
+
+    const links = [];
+    if (instagram) links.push(`<a href="${escapeHTML(instagram)}" target="_blank" rel="noopener noreferrer">Instagram</a>`);
+    if (spotify) links.push(`<a href="${escapeHTML(spotify)}" target="_blank" rel="noopener noreferrer">Spotify</a>`);
+
+    return `
+      <div class="artist">
+        <div class="name">${name}</div>
+        <div class="meta">${tags.join('')}</div>
+        <div class="links">${links.join('')}</div>
+      </div>
+    `;
+  }
+
+  async function load(){
+    try{
+      const res = await fetch('./artists.json', { cache: 'no-store' });
+      if(!res.ok) throw new Error('artists.json not found');
+      const data = await res.json();
+      const list = Array.isArray(data.artists) ? data.artists : [];
+
+      if(!list.length){
+        statusEl.textContent = 'No artists yet.';
+        return;
+      }
+
+      statusEl.style.display = 'none';
+      gridEl.innerHTML = list.map(artistCard).join('');
+    }catch(e){
+      statusEl.textContent = 'Artists list unavailable. Put artists.json next to artists.html.';
+    }
+  }
+
+  load();
+</script>
+</body>
+</html>
