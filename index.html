@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="AMIRAL RECORDS - A high-level Independent Record Label operating at the intersection of artistry, strategy, and long-term cultural value." />
+  <meta name="keywords" content="record label, music label, independent label, music production, artist management" />
+  <meta name="author" content="AMIRAL RECORDS" />
+  <title>AMIRAL RECORDS — Independent Record Label</title>
+  <link rel="icon" type="image/png" href="fav2.png">
+
+
+  <style>
+    :root{
+      --bg0:#000;
+      --bg1:#050505;
+      --bg2:#020202;
+
+      --red:#b30000;
+      --red2:#ff1a1a;
+
+      --txt: rgba(255,255,255,.82);
+      --mut: rgba(255,255,255,.56);
+      --line: rgba(255,255,255,.12);
+
+      --glow1: rgba(255,0,40,.30);
+      --glow2: rgba(255,0,0,.16);
+    }
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      overflow:hidden;
+      background: var(--bg0);
+      color: var(--txt);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    .stage{
+      position:relative;
+      width:100vw;
+      height:100vh;
+      isolation:isolate;
+      background:
+        radial-gradient(1000px 560px at 50% 46%, rgba(255,255,255,.055), rgba(0,0,0,0) 60%),
+        radial-gradient(760px 420px at 50% 50%, rgba(255,0,0,.09), rgba(255,0,0,0) 62%),
+        radial-gradient(1200px 900px at 50% 55%, rgba(0,0,0,0) 46%, rgba(0,0,0,.74) 74%, rgba(0,0,0,.95) 100%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+
+    .stage::before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(520px 120px at 50% 7%, rgba(179,0,0,.24), rgba(179,0,0,0) 72%),
+        radial-gradient(360px 90px at 42% 9%, rgba(255,0,0,.14), rgba(255,0,0,0) 75%),
+        radial-gradient(420px 110px at 58% 9%, rgba(255,0,0,.12), rgba(255,0,0,0) 78%);
+      mix-blend-mode: screen;
+      filter: blur(0.6px);
+      opacity:.85;
+    }
+
+    .topnav{
+      position:fixed;
+      top:22px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:10;
+      display:flex;
+      align-items:center;
+      gap:28px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,0,0,.06), rgba(0,0,0,.55));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size:12px;
+      user-select:none;
+    }
+    .topnav a{
+      color: rgba(255,255,255,.70);
+      text-decoration:none;
+      padding:6px 8px;
+      border-radius:999px;
+      transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+      outline: none;
+      position: relative;
+    }
+    .topnav a:hover{
+      color: rgba(255,255,255,.92);
+      background: rgba(255,0,0,.08);
+      box-shadow: 0 0 0 1px rgba(255,0,0,.14) inset, 0 0 20px rgba(255,0,0,.15);
+      transform: translateY(-1px);
+    }
+    .topnav a:focus-visible{
+      outline: 2px solid rgba(255,0,0,.5);
+      outline-offset: 2px;
+      border-radius: 999px;
+    }
+    .topnav a.active{
+      color: rgba(255,255,255,.95);
+      background: rgba(255,0,0,.12);
+      box-shadow: 0 0 0 1px rgba(255,0,0,.20) inset;
+    }
+
+    .artists-nav{
+      position:fixed;
+      top:22px;
+      right:24px;
+      z-index:10;
+      display:flex;
+      align-items:center;
+      gap:28px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,0,0,.06), rgba(0,0,0,.55));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-weight:700;
+      font-size:12px;
+      user-select:none;
+    }
+    .artists-nav a{
+      color: rgba(255,255,255,.70);
+      text-decoration:none;
+      padding:6px 8px;
+      border-radius:999px;
+      transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+      outline: none;
+      position: relative;
+    }
+    .artists-nav a:hover{
+      color: rgba(255,255,255,.92);
+      background: rgba(255,0,0,.08);
+      box-shadow: 0 0 0 1px rgba(255,0,0,.14) inset, 0 0 20px rgba(255,0,0,.15);
+      transform: translateY(-1px);
+    }
+    .artists-nav a:focus-visible{
+      outline: 2px solid rgba(255,0,0,.5);
+      outline-offset: 2px;
+      border-radius: 999px;
+    }
+
+    .center{
+      position:absolute; inset:0;
+      display:grid;
+      place-items:center;
+      z-index:2;
+      padding: 110px 24px 110px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    @keyframes fadeIn{
+      from{ opacity:0; transform:translateY(20px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+    .logo{
+      max-width:min(760px, 82vw);
+      max-height:min(280px, 34vh);
+      width:auto;
+      height:auto;
+      display:block;
+      filter:
+        drop-shadow(0 16px 48px rgba(0,0,0,.88))
+        drop-shadow(0 0 18px var(--glow1))
+        drop-shadow(0 0 40px var(--glow2));
+      animation: neonFlicker 7.2s infinite, logoFloat 8s ease-in-out infinite;
+      user-select:none;
+      -webkit-user-drag:none;
+      will-change: transform, filter;
+    }
+    @keyframes logoFloat{
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes neonFlicker{
+      0%, 100% { opacity:1; transform: translateY(0) scale(1); }
+      36% { opacity:.985; }
+      40% { opacity:.90; }
+      41% { opacity:1; }
+      69% { opacity:.97; }
+      71% { opacity:.88; }
+      72% { opacity:1; }
+    }
+
+    .contact{
+      position:fixed;
+      left:50%;
+      bottom:24px;
+      transform:translateX(-50%);
+      z-index:10;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,0,0,.05), rgba(0,0,0,.60));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(3px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: var(--mut);
+      user-select:none;
+      white-space:nowrap;
+    }
+    .contact a{
+      color: rgba(255,255,255,.74);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+      outline: none;
+    }
+    .contact a:hover{
+      color: rgba(255,255,255,.94);
+      background: rgba(255,0,0,.08);
+      transform: translateY(-1px);
+    }
+    .contact a:focus-visible{
+      outline: 2px solid rgba(255,0,0,.5);
+      outline-offset: 2px;
+      border-radius: 999px;
+    }
+    .sep{ opacity:.35; }
+
+    .ico{
+      width:14px;
+      height:14px;
+      display:block;
+      fill: rgba(255,255,255,.62);
+      filter: drop-shadow(0 0 10px rgba(255,0,0,.14));
+      transform: translateY(-.5px);
+    }
+
+    .grain, .scratches, .blood, .drips{
+      position:absolute;
+      pointer-events:none;
+      z-index:4;
+    }
+
+    .grain{
+      inset:-25%;
+      opacity:.14;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size:240px 240px;
+      mix-blend-mode: overlay;
+      animation: grainMove 7s steps(8) infinite;
+    }
+    @keyframes grainMove{
+      0%{ transform: translate3d(-2%, -2%, 0); }
+      50%{ transform: translate3d(2%, 1%, 0); }
+      100%{ transform: translate3d(-2%, -2%, 0); }
+    }
+
+    .scratches{
+      inset:0;
+      opacity:.12;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,.028) 0px,
+          rgba(255,255,255,0) 2px,
+          rgba(255,255,255,0) 24px
+        );
+      mix-blend-mode: screen;
+      animation: scratch 4.1s infinite;
+    }
+    @keyframes scratch{
+      0%,100%{ transform: translateX(0); opacity:.10; }
+      40%{ transform: translateX(-1px); opacity:.15; }
+      72%{ transform: translateX(1px); opacity:.12; }
+    }
+
+    .blood{
+      inset:-10%;
+      opacity:.34;
+      background:
+        radial-gradient(160px 120px at 12% 22%, rgba(179,0,0,.55), rgba(179,0,0,0) 72%),
+        radial-gradient(110px 90px at 18% 28%, rgba(255,0,0,.28), rgba(255,0,0,0) 72%),
+        radial-gradient(190px 140px at 86% 20%, rgba(179,0,0,.42), rgba(179,0,0,0) 74%),
+        radial-gradient(140px 110px at 82% 28%, rgba(255,0,0,.22), rgba(255,0,0,0) 74%),
+        radial-gradient(170px 130px at 78% 84%, rgba(179,0,0,.26), rgba(179,0,0,0) 78%),
+        radial-gradient(160px 120px at 24% 86%, rgba(179,0,0,.22), rgba(179,0,0,0) 78%);
+      filter: blur(.7px);
+      mix-blend-mode: screen;
+      animation: bloodBreath 10s ease-in-out infinite;
+    }
+    @keyframes bloodBreath{
+      0%,100%{ transform: translate3d(0,0,0) scale(1); opacity:.28; }
+      50%{ transform: translate3d(0,-1%,0) scale(1.01); opacity:.38; }
+    }
+
+    .drips{
+      inset:0;
+      opacity:.28;
+      background:
+        radial-gradient(70px 260px at 46% 0%, rgba(255,0,0,.20), rgba(255,0,0,0) 72%),
+        radial-gradient(50px 220px at 52% 0%, rgba(179,0,0,.18), rgba(179,0,0,0) 76%),
+        radial-gradient(34px 180px at 58% 0%, rgba(255,0,0,.14), rgba(255,0,0,0) 78%),
+        radial-gradient(26px 160px at 40% 0%, rgba(179,0,0,.12), rgba(179,0,0,0) 80%);
+      filter: blur(.9px);
+      mix-blend-mode: screen;
+      animation: dripShift 12.5s ease-in-out infinite;
+    }
+    @keyframes dripShift{
+      0%,100%{ transform: translateY(0); opacity:.22; }
+      50%{ transform: translateY(7px); opacity:.34; }
+    }
+
+    @media (max-width: 768px){
+      .logo{ max-height: 30vh; }
+      .contact{ font-size:11px; padding:9px 12px; bottom:20px; }
+    }
+    @media (max-width: 520px){
+      .topnav{ gap:16px; font-size:11px; padding:9px 12px; top:16px; }
+      .contact{ font-size:11px; letter-spacing:.12em; padding:9px 12px; bottom:18px; }
+      .logo{ max-height: 28vh; }
+      .artists-nav{
+        top:16px;
+        right:16px;
+        gap:16px;
+        font-size:11px;
+        padding:9px 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .logo, .grain, .scratches, .blood, .drips{ animation:none !important; }
+      * { transition-duration: 0.01ms !important; }
+    }
+    
+    /* Loading state for logo */
+    .logo[loading]{
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .logo:not([loading]){
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+    </nav>
+
+    <!-- Artists Navigation -->
+    <nav class="artists-nav" aria-label="Artists">
+      <a href="artists.html">ARTISTS</a>
+    </nav>
+
+    <main class="center" aria-label="Amiral Records">
+      <img class="logo" src="logo.png" alt="Amiral Records" />
+    </main>
+
+    <footer class="contact" aria-label="Contact">
+      <a href="https://instagram.com/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5A3.95 3.95 0 0 0 7.75 20.2h8.5A3.95 3.95 0 0 0 20.2 16.25v-8.5A3.95 3.95 0 0 0 16.25 3.8h-8.5ZM12 7.85a4.15 4.15 0 1 1 0 8.3 4.15 4.15 0 0 1 0-8.3Zm0 1.8a2.35 2.35 0 1 0 0 4.7 2.35 2.35 0 0 0 0-4.7Zm5.1-2.2a1.05 1.05 0 1 1 0 2.1 1.05 1.05 0 0 1 0-2.1Z"/>
+        </svg>
+        INSTA
+      </a>
+
+      <span class="sep">/</span>
+
+      <a href="mailto:info@amiral.world" aria-label="Email">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 3.2-8 5.1-8-5.1V6l8 5.1L20 6v1.2Z"/>
+        </svg>
+        EMAIL
+      </a>
+    </footer>
+
+    <div class="blood" aria-hidden="true"></div>
+    <div class="drips" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scratches" aria-hidden="true"></div>
+
+  </div>
+</body>
+</html>

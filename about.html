@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="About AMIRAL RECORDS - A strategic creative institution offering elite-level advertising, positioning, and advisory services alongside music production." />
+<meta name="keywords" content="AMIRAL RECORDS, record label, music label, independent label, artist management, music production" />
+<meta name="author" content="AMIRAL RECORDS" />
+<title>AMIRAL RECORDS — About</title>
+<link rel="icon" type="image/png" href="fav2.png">
+
+<style>
+:root{
+--bg0:#000;
+--bg1:#050505;
+--bg2:#020202;
+--txt:rgba(255,255,255,.82)
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+overflow-x:hidden;
+overflow-y:auto;
+background:var(--bg0);
+color:var(--txt);
+font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+scroll-behavior:smooth;
+position:relative;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+scroll-padding-top: 100px;
+}
+
+body::-webkit-scrollbar{
+width:8px;
+}
+
+body::-webkit-scrollbar-track{
+background:rgba(0,0,0,.3);
+}
+
+body::-webkit-scrollbar-thumb{
+background:rgba(255,0,0,.3);
+border-radius:4px;
+}
+
+body::-webkit-scrollbar-thumb:hover{
+background:rgba(255,0,0,.5);
+}
+
+.stage{
+position:relative;
+width:100%;
+min-height:100vh;
+background:
+radial-gradient(1000px 560px at 50% 46%,rgba(255,255,255,.055),rgba(0,0,0,0) 60%),
+radial-gradient(760px 420px at 50% 50%,rgba(255,0,0,.09),rgba(255,0,0,0) 62%),
+radial-gradient(1200px 900px at 50% 55%,rgba(0,0,0,0) 46%,rgba(0,0,0,.74) 74%,rgba(0,0,0,.95) 100%),
+linear-gradient(180deg,var(--bg1),var(--bg2));
+background-attachment:fixed;
+z-index:1;
+}
+.stage::before{
+content:"";
+position:absolute; inset:0;
+pointer-events:none;
+z-index:0;
+background:
+  radial-gradient(520px 120px at 50% 7%,rgba(179,0,0,.24),rgba(179,0,0,0) 72%),
+  radial-gradient(360px 90px at 42% 9%,rgba(255,0,0,.14),rgba(255,0,0,0) 75%),
+  radial-gradient(420px 110px at 58% 9%,rgba(255,0,0,.12),rgba(255,0,0,0) 78%);
+mix-blend-mode:screen;
+filter:blur(.6px);
+opacity:.85;
+}
+
+.topnav{
+position:fixed;
+top:22px;
+left:50%;
+transform:translateX(-50%);
+z-index:10000;
+display:flex;
+align-items:center;
+gap:28px;
+padding:10px 14px;
+border-radius:999px;
+background:linear-gradient(180deg,rgba(255,0,0,.06),rgba(0,0,0,.55));
+border:1px solid rgba(255,255,255,.10);
+backdrop-filter: blur(3px);
+box-shadow: 0 14px 40px rgba(0,0,0,.55);
+letter-spacing:.16em;
+text-transform:uppercase;
+font-weight:700;
+font-size:12px;
+user-select:none;
+pointer-events:auto;
+}
+
+.topnav a{
+color:rgba(255,255,255,.7);
+text-decoration:none;
+padding:6px 8px;
+border-radius:999px;
+transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+outline: none;
+position: relative;
+}
+.topnav a:hover{
+color:rgba(255,255,255,.92);
+background:rgba(255,0,0,.08);
+box-shadow: 0 0 0 1px rgba(255,0,0,.14) inset, 0 0 20px rgba(255,0,0,.15);
+transform: translateY(-1px);
+}
+.topnav a:focus-visible{
+outline: 2px solid rgba(255,0,0,.5);
+outline-offset: 2px;
+border-radius: 999px;
+}
+.topnav a.active{
+color:rgba(255,255,255,.95);
+background:rgba(255,0,0,.12);
+box-shadow: 0 0 0 1px rgba(255,0,0,.20) inset;
+}
+
+.artists-nav{
+position:fixed;
+top:22px;
+right:24px;
+z-index:10000;
+display:flex;
+align-items:center;
+gap:28px;
+padding:10px 14px;
+border-radius:999px;
+background:linear-gradient(180deg,rgba(255,0,0,.06),rgba(0,0,0,.55));
+border:1px solid rgba(255,255,255,.10);
+backdrop-filter: blur(3px);
+box-shadow: 0 14px 40px rgba(0,0,0,.55);
+letter-spacing:.16em;
+text-transform:uppercase;
+font-weight:700;
+font-size:12px;
+user-select:none;
+pointer-events:auto;
+}
+.artists-nav a{
+color:rgba(255,255,255,.7);
+text-decoration:none;
+padding:6px 8px;
+border-radius:999px;
+transition: color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+outline: none;
+position: relative;
+}
+.artists-nav a:hover{
+color:rgba(255,255,255,.92);
+background:rgba(255,0,0,.08);
+box-shadow: 0 0 0 1px rgba(255,0,0,.14) inset, 0 0 20px rgba(255,0,0,.15);
+transform: translateY(-1px);
+}
+.artists-nav a:focus-visible{
+outline: 2px solid rgba(255,0,0,.5);
+outline-offset: 2px;
+border-radius: 999px;
+}
+
+.wrap{
+position:relative;
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+padding:110px 24px 40px;
+z-index:2;
+animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes fadeIn{
+from{ opacity:0; transform:translateY(30px); }
+to{ opacity:1; transform:translateY(0); }
+}
+
+.card{
+width:min(1100px,92vw);
+max-width:1100px;
+border-radius:28px;
+border:1px solid rgba(255,255,255,.16);
+background:
+  radial-gradient(700px 350px at 50% 0%, rgba(255,0,0,.12), transparent 75%),
+  linear-gradient(180deg,rgba(18,18,18,.96),rgba(0,0,0,.92));
+box-shadow: 
+  0 32px 120px rgba(0,0,0,.9),
+  0 0 0 1px rgba(255,0,0,.12) inset,
+  0 0 80px rgba(255,0,0,.10);
+padding:48px;
+backdrop-filter: blur(4px);
+position:relative;
+overflow:hidden;
+margin-bottom:0;
+animation: cardSlideIn 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes cardSlideIn{
+from{ opacity:0; transform:translateY(40px) scale(0.98); }
+to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:2px;
+background:linear-gradient(90deg, transparent, rgba(255,0,0,.5), transparent);
+opacity:.6;
+}
+
+.kicker{
+letter-spacing:.24em;
+text-transform:uppercase;
+font-weight:900;
+font-size:18px;
+color: rgba(255,255,255,.98);
+text-shadow: 0 0 35px rgba(255,0,0,.4);
+margin-bottom:36px;
+padding-bottom:20px;
+border-bottom:2px solid rgba(255,255,255,.15);
+position:relative;
+}
+
+.kicker::after{
+content:"";
+position:absolute;
+bottom:-2px;
+left:0;
+width:60px;
+height:2px;
+background:rgba(255,0,0,.6);
+}
+
+.text{
+line-height:2.0;
+font-size:16px;
+color:rgba(255,255,255,.88);
+letter-spacing:.015em;
+font-weight:400;
+animation: textFadeIn 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes textFadeIn{
+from{ opacity:0; }
+to{ opacity:1; }
+}
+
+.text p{
+margin:0 0 28px 0;
+position:relative;
+padding-left:0;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+cursor: default;
+}
+
+.text p:hover{
+padding-left:8px;
+color:rgba(255,255,255,.95);
+}
+
+.text p:last-of-type{
+margin-bottom:32px;
+}
+
+.text strong{
+color:rgba(255,255,255,.98);
+font-weight:700;
+letter-spacing:.02em;
+transition: all 0.3s ease;
+}
+.text p:hover strong{
+text-shadow: 0 0 15px rgba(255,0,0,.4);
+}
+
+.text .highlight{
+color:rgba(255,255,255,.98);
+font-weight:700;
+text-shadow: 0 0 20px rgba(255,0,0,.3);
+letter-spacing:.02em;
+position:relative;
+transition: all 0.4s ease;
+}
+.text p:hover .highlight{
+text-shadow: 0 0 30px rgba(255,0,0,.5);
+transform: scale(1.02);
+}
+
+.text .quote-section{
+margin:32px 0;
+padding:24px 0;
+border-top:1px solid rgba(255,255,255,.10);
+border-bottom:1px solid rgba(255,255,255,.10);
+position:relative;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text .quote-section:hover{
+border-top-color:rgba(255,255,255,.15);
+border-bottom-color:rgba(255,255,255,.15);
+padding-left:4px;
+}
+
+.text .quote-section::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+bottom:0;
+width:3px;
+background:rgba(255,0,0,.4);
+border-radius:2px;
+transition: all 0.4s ease;
+}
+
+.text .quote-section:hover::before{
+width:4px;
+background:rgba(255,0,0,.6);
+}
+
+.text .quote-section p{
+margin:0;
+padding-left:20px;
+font-style:italic;
+color:rgba(255,255,255,.90);
+font-size:15px;
+line-height:1.85;
+transition: all 0.4s ease;
+}
+
+.text .quote-section:hover p{
+color:rgba(255,255,255,.95);
+text-shadow: 0 0 10px rgba(255,0,0,.2);
+}
+
+.contact-section{
+margin-top:40px;
+padding-top:28px;
+border-top:2px solid rgba(255,255,255,.15);
+position:relative;
+}
+
+.contact-section::before{
+content:"";
+position:absolute;
+top:-2px;
+left:0;
+width:80px;
+height:2px;
+background:rgba(255,0,0,.5);
+}
+
+.contact-section p{
+margin:0 0 12px 0;
+font-size:14px;
+color:rgba(255,255,255,.75);
+letter-spacing:.08em;
+font-weight:600;
+text-transform:uppercase;
+}
+
+.contact-section p:last-child{
+text-transform:none;
+letter-spacing:.02em;
+font-weight:400;
+}
+
+.contact-section a{
+color:rgba(255,255,255,.90);
+text-decoration:none;
+border-bottom:2px solid rgba(255,0,0,.30);
+padding-bottom:3px;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+display:inline-block;
+position:relative;
+outline: none;
+}
+
+.contact-section a:hover{
+color:rgba(255,255,255,1);
+border-bottom-color:rgba(255,0,0,.60);
+transform: translateX(5px);
+text-shadow: 0 0 15px rgba(255,0,0,.4);
+}
+.contact-section a:focus-visible{
+outline: 2px solid rgba(255,0,0,.5);
+outline-offset: 4px;
+border-radius: 4px;
+}
+
+.footer{
+position:relative;
+width:100%;
+max-width:1100px;
+padding:32px 40px;
+margin-top:60px;
+margin-bottom:0;
+background:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.50) 30%,rgba(0,0,0,.80) 100%);
+backdrop-filter:blur(8px);
+border-top:1px solid rgba(255,255,255,.12);
+border-radius:0 0 28px 28px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-shrink:0;
+}
+
+.footer-copyright{
+font-size:12px;
+color:rgba(255,255,255,.70);
+letter-spacing:.08em;
+font-weight:500;
+}
+
+.footer-social{
+display:flex;
+align-items:center;
+gap:16px;
+}
+
+.footer-social a{
+display:flex;
+align-items:center;
+justify-content:center;
+width:32px;
+height:32px;
+border-radius:8px;
+border:1px solid rgba(255,255,255,.12);
+background:rgba(0,0,0,.40);
+transition:all 0.3s ease;
+position:relative;
+overflow:hidden;
+}
+
+.footer-social a::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(255,0,0,.10);
+opacity:0;
+transition:opacity 0.3s ease;
+}
+
+.footer-social a:hover{
+border-color:rgba(255,0,0,.30);
+background:rgba(255,0,0,.15);
+transform:translateY(-2px);
+box-shadow:0 4px 12px rgba(255,0,0,.25);
+}
+
+.footer-social a:hover::before{
+opacity:1;
+}
+
+.footer-social a svg{
+width:18px;
+height:18px;
+fill:rgba(255,255,255,.75);
+transition:all 0.3s ease;
+position:relative;
+z-index:1;
+}
+
+.footer-social a:hover svg{
+fill:rgba(255,255,255,1);
+transform:scale(1.1);
+filter:drop-shadow(0 0 8px rgba(255,0,0,.5));
+}
+.footer-social a:focus-visible{
+outline: 2px solid rgba(255,0,0,.5);
+outline-offset: 2px;
+}
+
+.grain,.scratches,.blood,.drips{
+position:absolute;
+pointer-events:none;
+z-index:4;
+}
+.grain{
+inset:-25%;
+opacity:.14;
+background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+background-size:240px 240px;
+mix-blend-mode:overlay;
+animation:grainMove 7s steps(8) infinite;
+}
+@keyframes grainMove{
+0%{transform:translate3d(-2%,-2%,0)}
+50%{transform:translate3d(2%,1%,0)}
+100%{transform:translate3d(-2%,-2%,0)}
+}
+.grain{
+animation-duration: 12s;
+}
+.scratches{
+inset:0;
+opacity:.12;
+background:repeating-linear-gradient(90deg,rgba(255,255,255,.028) 0px,rgba(255,255,255,0) 2px,rgba(255,255,255,0) 24px);
+mix-blend-mode:screen;
+animation:scratch 4.1s infinite;
+}
+@keyframes scratch{
+0%,100%{transform:translateX(0);opacity:.10}
+40%{transform:translateX(-1px);opacity:.15}
+72%{transform:translateX(1px);opacity:.12}
+}
+.scratches{
+animation-duration: 6s;
+}
+.blood{
+inset:-10%;
+opacity:.34;
+background:radial-gradient(160px 120px at 12% 22%,rgba(179,0,0,.55),rgba(179,0,0,0) 72%),radial-gradient(110px 90px at 18% 28%,rgba(255,0,0,.28),rgba(255,0,0,0) 72%),radial-gradient(190px 140px at 86% 20%,rgba(179,0,0,.42),rgba(179,0,0,0) 74%),radial-gradient(140px 110px at 82% 28%,rgba(255,0,0,.22),rgba(255,0,0,0) 74%),radial-gradient(170px 130px at 78% 84%,rgba(179,0,0,.26),rgba(179,0,0,0) 78%),radial-gradient(160px 120px at 24% 86%,rgba(179,0,0,.22),rgba(179,0,0,0) 78%);
+filter:blur(.7px);
+mix-blend-mode:screen;
+animation:bloodBreath 10s ease-in-out infinite;
+}
+@keyframes bloodBreath{
+0%,100%{transform:translate3d(0,0,0) scale(1);opacity:.28}
+50%{transform:translate3d(0,-1%,0) scale(1.01);opacity:.38}
+}
+.blood{
+animation-duration: 15s;
+}
+.drips{
+inset:0;
+opacity:.28;
+background:radial-gradient(70px 260px at 46% 0%,rgba(255,0,0,.20),rgba(255,0,0,0) 72%),radial-gradient(50px 220px at 52% 0%,rgba(179,0,0,.18),rgba(179,0,0,0) 76%),radial-gradient(34px 180px at 58% 0%,rgba(255,0,0,.14),rgba(255,0,0,0) 78%),radial-gradient(26px 160px at 40% 0%,rgba(179,0,0,.12),rgba(179,0,0,0) 80%);
+filter:blur(.9px);
+mix-blend-mode:screen;
+animation:dripShift 12.5s ease-in-out infinite;
+}
+@keyframes dripShift{
+0%,100%{transform:translateY(0);opacity:.22}
+50%{transform:translateY(7px);opacity:.34}
+}
+.drips{
+animation-duration: 18s;
+}
+
+@media (max-width:768px){
+.card{padding:36px;}
+.text{font-size:15px;line-height:1.9;}
+.text p{margin-bottom:24px;}
+.kicker{font-size:16px;margin-bottom:28px;}
+}
+
+@media (max-width:520px){
+.topnav{gap:16px;font-size:11px;padding:9px 12px;top:16px;}
+.card{padding:28px;}
+.text{font-size:14px;line-height:1.85;}
+.text p{margin-bottom:20px;}
+.text p:hover{padding-left:0;}
+.text .quote-section{padding:20px 0;margin:24px 0;}
+.text .quote-section p{padding-left:16px;font-size:14px;}
+.artists-nav{
+  top:16px;
+  right:16px;
+  gap:16px;
+  font-size:11px;
+  padding:9px 12px;
+}
+.kicker{font-size:15px;margin-bottom:24px;padding-bottom:16px;}
+.contact-section{margin-top:28px;padding-top:24px;}
+.contact-section p{font-size:12px;}
+.footer{
+  padding:16px 20px;
+  flex-direction:column;
+  gap:16px;
+  align-items:center;
+}
+.footer-copyright{font-size:11px;text-align:center;}
+.footer-social{gap:12px;}
+.footer-social a{width:28px;height:28px;}
+.footer-social a svg{width:16px;height:16px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+.grain,.scratches,.blood,.drips{animation:none !important;}
+* { transition-duration: 0.01ms !important; }
+.text p:hover{padding-left:0;}
+.text .quote-section:hover{padding-left:0;}
+}
+</style>
+</head>
+
+<body>
+<nav class="topnav">
+<a href="index.html">HOME</a>
+<a href="about.html" class="active">ABOUT</a>
+</nav>
+
+<!-- Artists Navigation -->
+<nav class="artists-nav" aria-label="Artists">
+<a href="artists.html">ARTISTS</a>
+</nav>
+
+<div class="stage">
+<div class="wrap">
+<div class="card">
+<div class="kicker">ABOUT</div>
+<div class="text">
+<p><strong>AMIRAL RECORDS</strong> is a high-level Independent Record Label operating at the intersection of artistry, strategy, and long-term cultural value. We exist for artists who move with intention, who value control, depth, and longevity over noise and short-term visibility.</p>
+
+<p>We are not a conventional label. <span class="highlight">AMIRAL RECORDS</span> functions as a strategic creative institution, offering elite-level advertising, positioning, and advisory services alongside music production and release management. Every decision is deliberate. Every project is approached with precision, discretion, and respect for artistic identity.</p>
+
+<p>Our expertise extends far beyond distribution. We operate at the highest level of brand positioning, promotional architecture, and strategic consulting, ensuring that each artist's presence is not only visible, but meaningful. Visibility without direction has no value — our role is to create relevance, clarity, and long-term impact.</p>
+
+<p>From concept to release and beyond, we manage every phase with discipline and intent. This includes digital distribution, rights management, metadata integrity, audience targeting, and strategic media placement. Our promotional work is not driven by volume, but by alignment — ensuring that each release reaches the right audience, in the right context, at the right time.</p>
+
+<p>As consultants, we work closely with our artists to shape sustainable careers. We provide strategic guidance across creative direction, brand identity, and long-term positioning, allowing artists to operate with confidence and autonomy. <span class="highlight">AMIRAL RECORDS</span> is not a service provider; it is a strategic partner built for longevity.</p>
+
+<p>Independence defines us. We do not follow trends — we establish direction. We do not chase attention — we cultivate influence. Every project we support is treated as a long-term investment, protected by structure, clarity, and intent.</p>
+
+
+<div class="contact-section">
+<p><strong>Contact:</strong></p>
+<p><a href="mailto:info@amiral.world">info@amiral.world</a>  /  <a href="mailto:business@amiral.world">business@amiral.world</a></p>
+</div>
+</div>
+</div>
+
+<footer class="footer">
+<div class="footer-copyright">© 2025 AMIRAL</div>
+<div class="footer-social">
+<a href="https://instagram.com/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+</svg>
+</a>
+<a href="https://x.com/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="X">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+</svg>
+</a>
+<a href="https://t.me/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.27-.913.41-1.302.4-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.559z"/>
+</svg>
+</a>
+<a href="https://youtube.com/@amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+</svg>
+</a>
+<a href="https://linkedin.com/company/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+</svg>
+</a>
+<a href="https://open.spotify.com/artist/amiralrecords" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.84-.179-.84-.66 0-.419.34-.78.78-.66 4.56.96 8.52 1.68 11.64 3.48.42.18.72.78.42 1.14zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+</svg>
+</a>
+</div>
+</footer>
+</div>
+</div>
+
+<div class="blood" aria-hidden="true"></div>
+<div class="drips" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="scratches" aria-hidden="true"></div>
+</div>
+</body>
+</html>
