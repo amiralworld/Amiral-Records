@@ -1,0 +1,62 @@
+/* style.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: sans-serif; /* Fontunu koru */
+    min-height: 100vh;
+    
+    /* YENİ ARKA PLAN */
+    /* Tam siyah yerine çok koyu gri ve belli belirsiz kırmızı bir merkez */
+    background: radial-gradient(circle at center, #1a0505 0%, #000000 70%);
+    
+    /* İsteğe bağlı: Hafif bir "Noise" (kumlama) efekti ekleyerek dijital/yapay duruşu kırarız */
+    background-image: 
+        radial-gradient(circle at center, #2b0000 0%, #000000 85%),
+        url('https://grainy-gradients.vercel.app/noise.svg'); /* Hazır noise texture */
+    background-blend-mode: overlay;
+}
+
+/* PROJE KARTLARI TASARIMI */
+.projects-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.grid-layout {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.05); /* Şeffaf kart */
+    border: 1px solid rgba(255, 0, 0, 0.2); /* Hafif kırmızı çerçeve */
+    padding: 15px;
+    width: 250px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s all ease;
+    border-radius: 8px;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Üzerine gelince yukarı kalksın */
+    border-color: red;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3); /* Glow efekti */
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    filter: grayscale(100%); /* Resimler siyah beyaz olsun */
+    transition: 0.3s;
+}
+
+.project-card:hover .img-wrapper img {
+    filter: grayscale(0%); /* Mouse üzerine gelince renkli olsun */
+}

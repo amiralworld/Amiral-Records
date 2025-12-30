@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMIRAL RECORDS</title>
+    
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TEMEL AYARLAR --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            scroll-behavior: smooth;
+            background-image: radial-gradient(circle at center, #1a0505 0%, #000000 85%);
+            min-height: 100vh;
+        }
+
+        /* --- MENÜ --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            border-bottom: 1px solid #111;
+            box-sizing: border-box;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover {
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* DİL SEÇİCİ */
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid #333;
+            color: #555;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            border-color: red;
+            color: red;
+        }
+
+        /* --- BÖLÜM GENEL --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            letter-spacing: 5px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* --- HOME (LOGO GÜNCELLENDİ) --- */
+        #home img {
+            max-width: 800px; /* LOGO BURADAN BÜYÜTÜLDÜ (Eskisi 450px idi) */
+            width: 95%;       /* Genişlik oranı artırıldı */
+            filter: drop-shadow(0 0 30px rgba(100, 0, 0, 0.3));
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { filter: drop-shadow(0 0 30px rgba(100, 0, 0, 0.3)); }
+            50% { filter: drop-shadow(0 0 50px rgba(200, 0, 0, 0.5)); }
+            100% { filter: drop-shadow(0 0 30px rgba(100, 0, 0, 0.3)); }
+        }
+
+        /* --- ABOUT --- */
+        #about {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .about-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #ccc;
+            background: rgba(10, 0, 0, 0.4);
+            padding: 40px;
+            border-left: 2px solid #ff0000;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .contact-info a {
+            color: red;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-info a:hover { text-shadow: 0 0 10px red; }
+
+        /* --- TEAM (KURUCULAR) --- */
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 50px;
+            max-width: 1200px;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 200px;
+            transition: 0.3s;
+        }
+
+        .team-member:hover { transform: translateY(-10px); }
+
+        .member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px auto;
+            border: 2px solid #333;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.3s;
+        }
+
+        .team-member:hover .member-img {
+            border-color: red;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .team-member:hover .member-img img { filter: grayscale(0%); }
+
+        .member-name { font-size: 1.1rem; color: white; margin: 5px 0; letter-spacing: 1px; }
+        .member-role { font-size: 0.9rem; color: red; font-weight: bold; letter-spacing: 2px; }
+
+        /* --- PROJECTS --- */
+        .project-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .project-card {
+            background: #080808;
+            border: 1px solid #222;
+            width: 300px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            border-color: #ff0000;
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.15);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .project-card:hover .img-container img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .project-card h3 {
+            text-align: center;
+            color: #fff;
+            padding: 15px;
+            margin: 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 30px;
+            border-top: 1px solid #111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #050505;
+        }
+
+        .social-icons a {
+            color: #555;
+            font-size: 18px;
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover { color: red; }
+
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 10px; }
+            .nav-center { position: relative; left: auto; transform: none; margin: 10px 0; }
+            .lang-selector { margin-top: 10px; }
+            footer { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div style="width: 100px;"></div> 
+
+        <div class="nav-center">
+            <a href="#home" class="nav-link" id="nav-home">HOME</a>
+            <a href="#about" class="nav-link" id="nav-about">ABOUT</a>
+            <a href="#team" class="nav-link" id="nav-team">TEAM</a>
+            <a href="#projects" class="nav-link" id="nav-projects">PROJECTS</a>
+        </div>
+
+        <div class="lang-selector">
+            <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="setLanguage('tr')">TR</button>
+            <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+            <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+        </div>
+    </nav>
+
+    <section id="home">
+        <img src="./assets/logo.png" alt="AMIRAL">
+    </section>
+
+    <section id="about">
+        <h2 id="about-title">AMIRAL RECORDS</h2>
+        <div class="about-content">
+            <div id="about-text">
+                <p><strong>AMIRAL RECORDS</strong> is a high-level Independent Record Label operating at the intersection of artistry, strategy, and long-term cultural value. We exist for artists who move with intention, who value control, depth, and longevity over noise and short-term visibility.</p>
+                <p>We are not a conventional label. <strong>AMIRAL RECORDS</strong> functions as a strategic creative institution, offering elite-level advertising, positioning, and advisory services alongside music production and release management. Every decision is deliberate. Every project is approached with precision, discretion, and respect for artistic identity.</p>
+                <p>Our expertise extends far beyond distribution. We operate at the highest level of brand positioning, promotional architecture, and strategic consulting, ensuring that each artist's presence is not only visible, but meaningful. Visibility without direction has no value — our role is to create relevance, clarity, and long-term impact.</p>
+                <p>From concept to release and beyond, we manage every phase with discipline and intent. This includes digital distribution, rights management, metadata integrity, audience targeting, and strategic media placement. Our promotional work is not driven by volume, but by alignment — ensuring that each release reaches the right audience, in the right context, at the right time.</p>
+                <p>As consultants, we work closely with our artists to shape sustainable careers. We provide strategic guidance across creative direction, brand identity, and long-term positioning, allowing artists to operate with confidence and autonomy. <strong>AMIRAL RECORDS</strong> is not a service provider; it is a strategic partner built for longevity.</p>
+                <p>Independence defines us. We do not follow trends — we establish direction. We do not chase attention — we cultivate influence. Every project we support is treated as a long-term investment, protected by structure, clarity, and intent.</p>
+            </div>
+            
+            <div class="contact-info">
+                Contact: <br>
+                <a href="mailto:info@amiral.world">info@amiral.world</a> / 
+                <a href="mailto:business@amiral.world">business@amiral.world</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2 id="team-title">LEADERSHIP</h2>
+        <div class="team-grid" id="team-container">
+            </div>
+    </section>
+
+    <section id="projects">
+        <h2 id="projects-title">SELECTED WORKS</h2>
+        <div class="project-grid" id="project-container">
+            </div>
+    </section>
+
+    <footer>
+        <div style="color:#444; font-size: 12px;">&copy; 2025 AMIRAL RECORDS</div>
+        <div class="social-icons">
+            <a href="https://instagram.com/amiralrecords" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/amiralrecords" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://linkedin.com/company/amiralrecords" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://youtube.com/@amiralrecords" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="team.js"></script>
+
+    <script>
+        // --- 1. PROJELERİ YÜKLE ---
+        const projectContainer = document.getElementById('project-container');
+        if (typeof projectData !== 'undefined') {
+            projectData.forEach(p => {
+                projectContainer.innerHTML += `
+                    <a href="${p.link}" class="project-card" target="_blank">
+                        <div class="img-container">
+                            <img src="./assets/${p.image}" onerror="this.src='https://via.placeholder.com/300x180/111/555?text=AMIRAL'">
+                        </div>
+                        <h3>${p.title}</h3>
+                    </a>
+                `;
+            });
+        }
+
+        // --- 2. TEAM YÜKLE ---
+        const teamContainer = document.getElementById('team-container');
+        if (typeof teamData !== 'undefined') {
+            teamData.forEach(member => {
+                teamContainer.innerHTML += `
+                    <div class="team-member">
+                        <a href="${member.link}" target="_blank" style="text-decoration:none;">
+                            <div class="member-img">
+                                <img src="./assets/${member.image}" onerror="this.src='https://via.placeholder.com/150/111/555?text=PP'">
+                            </div>
+                            <div class="member-name">${member.name}</div>
+                            <div class="member-role">${member.role}</div>
+                        </a>
+                    </div>
+                `;
+            });
+        }
+
+        // --- 3. DİL YÖNETİMİ ---
+        const translations = {
+            en: {
+                navHome: "HOME", navAbout: "ABOUT", navTeam: "TEAM", navProjects: "PROJECTS",
+                aboutTitle: "AMIRAL RECORDS",
+                teamTitle: "LEADERSHIP",
+                projectsTitle: "SELECTED WORKS",
+                aboutText: `
+                    <p><strong>AMIRAL RECORDS</strong> is a high-level Independent Record Label operating at the intersection of artistry, strategy, and long-term cultural value. We exist for artists who move with intention, who value control, depth, and longevity over noise and short-term visibility.</p>
+                    <p>We are not a conventional label. <strong>AMIRAL RECORDS</strong> functions as a strategic creative institution, offering elite-level advertising, positioning, and advisory services alongside music production and release management. Every decision is deliberate. Every project is approached with precision, discretion, and respect for artistic identity.</p>
+                    <p>Our expertise extends far beyond distribution. We operate at the highest level of brand positioning, promotional architecture, and strategic consulting, ensuring that each artist's presence is not only visible, but meaningful. Visibility without direction has no value — our role is to create relevance, clarity, and long-term impact.</p>
+                    <p>From concept to release and beyond, we manage every phase with discipline and intent. This includes digital distribution, rights management, metadata integrity, audience targeting, and strategic media placement. Our promotional work is not driven by volume, but by alignment — ensuring that each release reaches the right audience, in the right context, at the right time.</p>
+                    <p>As consultants, we work closely with our artists to shape sustainable careers. We provide strategic guidance across creative direction, brand identity, and long-term positioning, allowing artists to operate with confidence and autonomy. <strong>AMIRAL RECORDS</strong> is not a service provider; it is a strategic partner built for longevity.</p>
+                    <p>Independence defines us. We do not follow trends — we establish direction. We do not chase attention — we cultivate influence. Every project we support is treated as a long-term investment, protected by structure, clarity, and intent.</p>
+                `
+            },
+            tr: {
+                navHome: "ANASAYFA", navAbout: "HAKKINDA", navTeam: "EKİP", navProjects: "PROJELER",
+                aboutTitle: "AMIRAL RECORDS",
+                teamTitle: "YÖNETİM KADROSU",
+                projectsTitle: "SEÇİLMİŞ İŞLER",
+                aboutText: `
+                    <p><strong>AMIRAL RECORDS</strong>, sanat, strateji ve uzun vadeli kültürel değerin kesişim noktasında faaliyet gösteren üst düzey bir Bağımsız Plak Şirketidir. Biz, gürültü ve kısa vadeli görünürlük yerine kontrole, derinliğe ve kalıcılığa değer veren, bir niyetle hareket eden sanatçılar için varız.</p>
+                    <p>Biz geleneksel bir plak şirketi değiliz. <strong>AMIRAL RECORDS</strong>, müzik prodüksiyonu ve yayın yönetiminin yanı sıra elit düzeyde reklam, konumlandırma ve danışmanlık hizmetleri sunan stratejik bir yaratıcı kurum olarak işlev görür. Her karar kasıtlıdır. Her projeye hassasiyet, gizlilik ve sanatsal kimliğe saygıyla yaklaşılır.</p>
+                    <p>Uzmanlığımız dağıtımın çok ötesine uzanır. Marka konumlandırma, tanıtım mimarisi ve stratejik danışmanlığın en üst seviyesinde faaliyet göstererek her sanatçının varlığının sadece görünür değil, aynı zamanda anlamlı olmasını sağlıyoruz. Yönü olmayan görünürlüğün hiçbir değeri yoktur; bizim rolümüz alaka, netlik ve uzun vadeli etki yaratmaktır.</p>
+                    <p>Konseptten yayına ve ötesine, her aşamayı disiplin ve niyetle yönetiyoruz. Bu; dijital dağıtım, hak yönetimi, meta veri bütünlüğü, kitle hedefleme ve stratejik medya yerleşimini içerir. Tanıtım çalışmalarımız hacimle değil, uyumla yönlendirilir — her yayının doğru kitleye, doğru bağlamda ve doğru zamanda ulaşmasını sağlarız.</p>
+                    <p>Danışmanlar olarak, sürdürülebilir kariyerler şekillendirmek için sanatçılarımızla yakın çalışıyoruz. Yaratıcı yön, marka kimliği ve uzun vadeli konumlandırma genelinde stratejik rehberlik sağlayarak sanatçıların güven ve özerklikle hareket etmelerine olanak tanıyoruz. <strong>AMIRAL RECORDS</strong> bir hizmet sağlayıcı değildir; kalıcılık için inşa edilmiş stratejik bir ortaktır.</p>
+                    <p>Bağımsızlık bizi tanımlar. Trendleri takip etmeyiz — yön belirleriz. İlgi peşinde koşmayız — etkiyi geliştiririz. Desteklediğimiz her proje, yapı, netlik ve niyetle korunan uzun vadeli bir yatırım olarak ele alınır.</p>
+                `
+            },
+            ru: {
+                navHome: "ГЛАВНАЯ", navAbout: "О НАС", navTeam: "КОМАНДА", navProjects: "ПРОЕКТЫ",
+                aboutTitle: "AMIRAL RECORDS",
+                teamTitle: "РУКОВОДСТВО",
+                projectsTitle: "ИЗБРАННЫЕ РАБОТЫ",
+                aboutText: `
+                    <p><strong>AMIRAL RECORDS</strong> — это независимый музыкальный лейбл высокого уровня, работающий на пересечении искусства, стратегии и долгосрочной культурной ценности. Мы существуем для артистов, которые действуют осознанно, ценят контроль, глубину и долголетие выше шума и кратковременной видимости.</p>
+                    <p>Мы не обычный лейбл. <strong>AMIRAL RECORDS</strong> функционирует как стратегический творческий институт, предлагающий услуги рекламы, позиционирования и консалтинга элитного уровня наряду с музыкальным производством и управлением релизами. Каждое решение взвешено. К каждому проекту мы подходим с точностью, конфиденциальностью и уважением к художественной идентичности.</p>
+                    <p>Наша экспертиза выходит далеко за рамки дистрибуции. Мы работаем на высшем уровне позиционирования бренда, рекламной архитектуры и стратегического консалтинга, гарантируя, что присутствие каждого артиста будет не только заметным, но и значимым. Видимость без направления не имеет ценности — наша роль заключается в создании актуальности, ясности и долгосрочного влияния.</p>
+                    <p>От концепции до релиза и далее мы управляем каждым этапом с дисциплиной и намерением. Это включает цифровую дистрибуцию, управление правами, целостность метаданных, таргетинг аудитории и стратегическое размещение в медиа. Наша работа по продвижению определяется не объемом, а соответствием — гарантируя, что каждый релиз достигнет нужной аудитории, в нужном контексте и в нужное время.</p>
+                    <p>Как консультанты, мы тесно сотрудничаем с нашими артистами для формирования устойчивой карьеры. Мы предоставляем стратегическое руководство в области творческого направления, идентичности бренда и долгосрочного позиционирования, позволяя артистам действовать уверенно и автономно. <strong>AMIRAL RECORDS</strong> — это не поставщик услуг; это стратегический партнер, созданный для долголетия.</p>
+                    <p>Независимость определяет нас. Мы не следуем трендам — мы устанавливаем направление. Мы не гонимся за вниманием — мы культивируем влияние. Каждый проект, который мы поддерживаем, рассматривается как долгосрочная инвестиция, защищенная структурой, ясностью и намерением.</p>
+                `
+            },
+            fr: {
+                navHome: "ACCUEIL", navAbout: "À PROPOS", navTeam: "ÉQUIPE", navProjects: "PROJETS",
+                aboutTitle: "AMIRAL RECORDS",
+                teamTitle: "DIRECTION",
+                projectsTitle: "SÉLECTION",
+                aboutText: `
+                    <p><strong>AMIRAL RECORDS</strong> est un label indépendant de haut niveau opérant à l'intersection de l'art, de la stratégie et de la valeur culturelle à long terme. Nous existons pour les artistes qui agissent avec intention, qui privilégient le contrôle, la profondeur et la longévité au bruit et à la visibilité à court terme.</p>
+                    <p>Nous ne sommes pas un label conventionnel. <strong>AMIRAL RECORDS</strong> fonctionne comme une institution créative stratégique, offrant des services de publicité, de positionnement et de conseil d'élite aux côtés de la production musicale et de la gestion des sorties. Chaque décision est délibérée. Chaque projet est abordé avec précision, discrétion et respect de l'identité artistique.</p>
+                    <p>Notre expertise s'étend bien au-delà de la distribution. Nous opérons au plus haut niveau du positionnement de marque, de l'architecture promotionnelle et du conseil stratégique, garantissant que la présence de chaque artiste est non seulement visible, mais significative. La visibilité sans direction n'a aucune valeur — notre rôle est de créer de la pertinence, de la clarté et un impact à long terme.</p>
+                    <p>Du concept à la sortie et au-delà, nous gérons chaque phase avec discipline et intention. Cela inclut la distribution numérique, la gestion des droits, l'intégrité des métadonnées, le ciblage de l'audience et le placement médiatique stratégique. Notre travail promotionnel n'est pas motivé par le volume, mais par l'alignement — garantissant que chaque sortie atteint le bon public, dans le bon contexte, au bon moment.</p>
+                    <p>En tant que consultants, nous travaillons en étroite collaboration avec nos artistes pour façonner des carrières durables. Nous fournissons des conseils stratégiques sur la direction créative, l'identité de marque et le positionnement à long terme, permettant aux artistes d'opérer avec confiance et autonomie. <strong>AMIRAL RECORDS</strong> n'est pas un prestataire de services ; c'est un partenaire stratégique bâti pour la longévité.</p>
+                    <p>L'indépendance nous définit. Nous ne suivons pas les tendances — nous établissons la direction. Nous ne courons pas après l'attention — nous cultivons l'influence. Chaque projet que nous soutenons est traité comme un investissement à long terme, protégé par la structure, la clarté et l'intention.</p>
+                `
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const t = translations[lang];
+            document.getElementById('nav-home').textContent = t.navHome;
+            document.getElementById('nav-about').textContent = t.navAbout;
+            document.getElementById('nav-team').textContent = t.navTeam;
+            document.getElementById('nav-projects').textContent = t.navProjects;
+            
+            document.getElementById('about-title').textContent = t.aboutTitle;
+            document.getElementById('about-text').innerHTML = t.aboutText;
+            document.getElementById('team-title').textContent = t.teamTitle;
+            document.getElementById('projects-title').textContent = t.projectsTitle;
+        }
+    </script>
+
+</body>
+</html>
