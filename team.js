@@ -10,23 +10,24 @@ const teamData = [
     },
     {
         id: 2,
-        name: "METEHAN I.",
+        name: "İSMAİL Ç.",
         role: "CEO",
         image: "team2.png",
         link: "#"
     },
     {
         id: 3,
-        name: "İSMAİL Ç.",
+        name: "MUZAFFER G.",
         role: "CEO",
         image: "team3.jpeg",
         link: "#"
     },
     {
         id: 4,
-        name: "RECEP TAYYİP E.",
-        role: "CO-FOUNDER",
+        name: "EMİRHAN E.",
+        role: "PRODUCER",
         image: "team4.jpeg",
         link: "#"
     }
+
 ];
